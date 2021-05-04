@@ -36,13 +36,22 @@ class ScrollingActivity : AppCompatActivity() {
         binding.toolbarLayout.title = title
 
 
-        //finding and setting values of buttons and text
-
 
         submit = findViewById(R.id.submit_button)
         submit.setOnClickListener{
+
+            //getting string from text fields
             name = findViewById<TextInputLayout>(R.id.input_name).editText!!.text.toString()
+            education = findViewById<TextInputLayout>(R.id.input_education).editText!!.text.toString()
+            major = findViewById<TextInputLayout>(R.id.input_major).editText!!.text.toString()
+            work = findViewById<TextInputLayout>(R.id.input_work).editText!!.text.toString()
+            contact = findViewById<TextInputLayout>(R.id.input_contact).editText!!.text.toString()
+            //printing them out on screen
             showToast(name)
+            showToast(education)
+            showToast(major)
+            showToast(work)
+            showToast(contact)
         }
 
     }
