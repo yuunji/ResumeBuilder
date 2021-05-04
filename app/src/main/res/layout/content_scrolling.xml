@@ -33,16 +33,75 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Education"
-            app:helperText="Please your highest level of education"
+            app:endIconMode="clear_text"
+            app:helperText="Please input your highest level of education a"
             app:helperTextTextColor="@color/burgundy"
-            app:startIconDrawable="@drawable/ic_school"
-            app:endIconMode="clear_text">
+            app:startIconDrawable="@drawable/ic_school">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_education"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:id="@+id/input_major"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Major/Area of Concentration"
+            app:helperText="Please input your major or area of concentration"
+            app:helperTextTextColor="@color/burgundy"
+            app:startIconDrawable="@drawable/ic_assignment"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:id="@+id/input_work"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Work Experience"
+            app:helperText="Please input your Work experience"
+            app:helperTextTextColor="@color/burgundy"
+            app:startIconDrawable="@drawable/ic_work"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:id="@+id/input_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Contact Information"
+            app:helperText="Please input your contact info"
+            app:helperTextTextColor="@color/burgundy"
+            app:startIconDrawable="@drawable/ic_contact"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Submit" />
 
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.core.widget.NestedScrollView>
