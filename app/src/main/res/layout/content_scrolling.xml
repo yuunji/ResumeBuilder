@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:hint="Education"
             app:endIconMode="clear_text"
-            app:helperText="Please input your highest level of education a"
+            app:helperText="Please input your highest level of education"
             app:helperTextTextColor="@color/burgundy"
             app:startIconDrawable="@drawable/ic_school">
 
