@@ -103,6 +103,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_check"
+            android:gravity="center_vertical"
+            android:paddingLeft="155dp"
             android:text="Submit" />
 
     </com.google.android.material.textfield.TextInputLayout>
