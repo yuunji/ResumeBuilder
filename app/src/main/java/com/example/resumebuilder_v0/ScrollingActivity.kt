@@ -16,10 +16,10 @@ import android.widget.Toast
 import com.example.resumebuilder_v0.databinding.ActivityScrollingBinding
 import com.google.android.material.textfield.TextInputLayout
 import org.w3c.dom.Text
+import java.io.File
 import java.io.Serializable
 
 class ScrollingActivity : AppCompatActivity() {
-
 
     lateinit var binding: ActivityScrollingBinding
     lateinit var submit: Button
@@ -31,20 +31,18 @@ class ScrollingActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         binding.toolbarLayout.title = title
 
-        var inputInfo = ResumeInfo()
+        val inputInfo = ResumeInfo()
 
-
+        //submit button
         submit = findViewById(R.id.submit_button)
         submit.setOnClickListener{
 
-            //get input info from findviewbyId, convert to string
-            //place them into info object
+            //get input and place into object
             inputInfo.name = findViewById<TextInputLayout>(R.id.input_name).editText!!.text.toString()
             inputInfo.education = findViewById<TextInputLayout>(R.id.input_education).editText!!.text.toString()
             inputInfo.major = findViewById<TextInputLayout>(R.id.input_major).editText!!.text.toString()
             inputInfo.work = findViewById<TextInputLayout>(R.id.input_work).editText!!.text.toString()
             inputInfo.contact = findViewById<TextInputLayout>(R.id.input_contact).editText!!.text.toString()
-
 
             //goes to next screen with inputted info
             val intent = Intent(this, ResultActivity::class.java)
@@ -60,6 +58,7 @@ class ScrollingActivity : AppCompatActivity() {
         return true
     }
 
+    //input info object
     class ResumeInfo : Serializable
     {
         var name : String = ""
@@ -68,6 +67,8 @@ class ScrollingActivity : AppCompatActivity() {
         var work : String = ""
         var contact : String = ""
     }
+
+    private fun showToast(text: String) { Toast.makeText(this, text, Toast.LENGTH_SHORT).show() }
 
 }
 
