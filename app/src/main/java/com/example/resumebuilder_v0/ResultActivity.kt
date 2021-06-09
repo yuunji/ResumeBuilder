@@ -1,11 +1,9 @@
 package com.example.resumebuilder_v0
 
-import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Color.pack
 import android.graphics.Color.rgb
 import android.graphics.Paint
 import android.graphics.pdf.PdfDocument
@@ -17,12 +15,12 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.ColorLong
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+
 
 @RequiresApi(Build.VERSION_CODES.KITKAT)
 class ResultActivity : AppCompatActivity() {
@@ -40,12 +38,31 @@ class ResultActivity : AppCompatActivity() {
         //setup download button
         val downloadButton = findViewById<Button>(R.id.downloadButton)
         downloadButton.setOnClickListener{
+            showToast("View PDF")
+            val intent = Intent("android.intent.action.MAIN")
+            intent.component =
+                ComponentName("com.example.android.pdfrendererbasic",
+                    "com.example.android.pdfrendererbasic.PdfActivity")
+            intent.addCategory("android.intent.category.LAUNCHER")
+            intent.flags = Intent.FLAG_FROM_BACKGROUND
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+
+            /*
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
+
+
             createPDF("TEST TEXT")
             viewPdf()
+             */
         }
         //button to return to original screen
         val backButton = findViewById<Button>(R.id.backButton)
         backButton.setOnClickListener{
+
+
             val intent = Intent(this, ScrollingActivity::class.java)
             startActivity(intent)
         }
