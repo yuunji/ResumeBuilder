@@ -17,6 +17,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commitNow
+import com.example.android.pdfrendererbasic.PdfRendererBasicFragment
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -30,6 +32,7 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+
         //get input info and display on test text
         val info  = intent.getSerializableExtra("ResumeInfo") as? ScrollingActivity.ResumeInfo
         val testText = findViewById<TextView>(R.id.resultText)
@@ -39,14 +42,12 @@ class ResultActivity : AppCompatActivity() {
         val downloadButton = findViewById<Button>(R.id.downloadButton)
         downloadButton.setOnClickListener{
             showToast("View PDF")
-            val intent = Intent("android.intent.action.MAIN")
-            intent.component =
-                ComponentName("com.example.android.pdfrendererbasic",
-                    "com.example.android.pdfrendererbasic.PdfActivity")
-            intent.addCategory("android.intent.category.LAUNCHER")
-            intent.flags = Intent.FLAG_FROM_BACKGROUND
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
+
+            if (savedInstanceState == null) {
+                supportFragmentManager.commitNow {
+                    replace(R.id.resultContainer, PdfRendererBasicFragment())
+                }
+            }
 
             /*
             val intent = Intent(this, MainActivity::class.java)

@@ -35,12 +35,10 @@ class PdfRendererBasicViewModel constructor(
 ) : AndroidViewModel(application) {
 
     companion object {
-        const val FILENAME = "test.pdf"
+        const val FILENAME = "sample.pdf"
     }
 
     private val job = Job()
-
-
     private var fileDescriptor: ParcelFileDescriptor? = null
     private var pdfRenderer: PdfRenderer? = null
     private var currentPage: PdfRenderer.Page? = null
@@ -50,13 +48,11 @@ class PdfRendererBasicViewModel constructor(
     val pageBitmap: LiveData<Bitmap>
         get() = _pageBitmap
 
-
     init {
             openPdfRenderer()
             showPage(0)
             if (cleared) {
                 closePdfRenderer()
-
         }
     }
 
