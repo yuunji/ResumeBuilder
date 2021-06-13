@@ -1,14 +1,11 @@
 package com.example.resumebuilder_v0
 
-import android.content.ActivityNotFoundException
-import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color.rgb
 import android.graphics.Paint
 import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -32,7 +29,6 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-
         //get input info and display on test text
         val info  = intent.getSerializableExtra("ResumeInfo") as? ScrollingActivity.ResumeInfo
         val testText = findViewById<TextView>(R.id.resultText)
@@ -43,50 +39,23 @@ class ResultActivity : AppCompatActivity() {
         downloadButton.setOnClickListener{
             showToast("View PDF")
 
+            //show pdf
             if (savedInstanceState == null) {
                 supportFragmentManager.commitNow {
                     replace(R.id.resultContainer, PdfRendererBasicFragment())
                 }
             }
 
-            /*
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-
-
-
-            createPDF("TEST TEXT")
-            viewPdf()
-             */
         }
+
         //button to return to original screen
         val backButton = findViewById<Button>(R.id.backButton)
         backButton.setOnClickListener{
-
-
             val intent = Intent(this, ScrollingActivity::class.java)
             startActivity(intent)
         }
      }
 
-
-     private fun viewPdf() {
-         var filedirectory= "/storage/emulated/0/Android/data/com.example.resumebuilder_v0/files/pdf/pdf/userResume.pdf"
-         val pdfFile = File(filedirectory)
-        val path: Uri = Uri.fromFile(pdfFile)
-
-        // Setting the intent for pdf reader
-        val pdfIntent = Intent(Intent.ACTION_VIEW)
-         pdfIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-         pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        pdfIntent.setDataAndType(path, "application/pdf")
-
-        try {
-            startActivity(pdfIntent)
-        } catch (e: ActivityNotFoundException) {
-            Toast.makeText(this, "Can't read pdf file", Toast.LENGTH_SHORT).show()
-        }
-    }
 
     private fun createPDF(data : String) {
         val directory = this.getExternalFilesDir(null).toString()
